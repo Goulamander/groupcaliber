@@ -1,0 +1,43 @@
+AddHandler application/x-httpd-php .php
+
+RewriteEngine On
+
+RewriteRule ^survey_db(.*)$ /app_survey/survey_db.php$1
+RewriteRule ^survey_quotas(.*)$ /app_survey/survey_quotas.php$1
+RewriteRule ^survey_time(.*)$ /app_survey/survey_time.php$1
+RewriteRule ^survey_flow(.*)$ /app_survey/survey_flow.php$1
+RewriteRule ^survey(.*)$ /app_survey/survey.php$1
+
+#restrict access to .git directory 
+RedirectMatch 404 /\.git
+
+#	FILE DESCRIPTION:
+#		PATH: htaccess;
+#		TYPE: htaccess (configuration file);
+#		PURPOSE: adds a few URL rewrites for the Survey application;
+#		REFERENCED IN: - ;
+#		FUNCTIONS DECLARED - :
+#		STYLES: - ; 
+
+# DISABLE CACHING
+<IfModule mod_headers.c>
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+</IfModule>
+
+<FilesMatch "\.(css|js)$">
+    <IfModule mod_expires.c>
+        ExpiresActive Off
+    </IfModule>
+    <IfModule mod_headers.c>
+        FileETag None
+        Header unset ETag
+        Header unset Pragma
+        Header unset Cache-Control
+        Header unset Last-Modified
+        Header set Pragma "no-cache"
+        Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
+        Header set Expires "Thu, 1 Jan 1970 00:00:00 GMT"
+    </IfModule>
+</FilesMatch>

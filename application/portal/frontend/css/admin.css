@@ -1,0 +1,96 @@
+
+/*
+	FILE DESCRIPTION:
+		PATH: frontend/css/admin.css;
+		TYPE: css (css style file);
+		PURPOSE: sets styling rules for the Admin page;
+		REFERENCED IN: backend/includes/index.lnk.php;
+		FUNCTIONS DECLARED - ;
+		STYLES: - ; 
+*/  
+
+.admin {
+	display:none; 
+	margin:0px; 
+	padding:0px; 
+	margin: auto; 
+	margin-top:70px;
+	margin-bottom:50px;
+	padding-bottom:50px;
+	width: 90%;
+}
+
+/*#export_data_button {
+	width:100%;
+	background-color:white;
+	border-color:#003300;
+	color:#003300;
+	cursor:pointer;
+}*/
+
+.tab-pane {
+	padding-left:0px !important;
+	padding-right:0px !important;
+}
+
+#tab_div_11 {
+	text-align:left;
+}
+
+.tab-content .container {
+	max-width:unset !important;
+}
+
+.tab-content .row {
+	margin-left:unset !important;
+	margin-right:unset !important;
+}
+
+.tab_scroll {
+	overflow-x: scroll;
+	overflow-y: hidden;
+	padding-bottom: 10px;
+}
+
+.screen_landscape_mobile .admin {
+	padding-left: calc(45px + 2%);
+	padding-right: 2%;
+	margin-top: 2vh;
+	width: 100%;
+}
+
+.screen_portrait_all .admin {
+	margin-top: calc(45px + 3.5%);
+}
+
+#file_loader_input {
+	display:none;
+}
+
+#file_loader_input_logos {
+	display:none;
+}
+
+#file_loader_input_slides {
+	display:none;
+}
+
+#file_loader_button {
+	height:38px;
+	padding: 0px;
+    margin-right: 50px;
+    margin-top: 20px;
+}
+
+label[for=file_loader_input_logos] {
+	height:38px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+label[for=file_loader_input_slides] {
+	height:38px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+	

@@ -1,0 +1,61 @@
+version: '3.7'
+
+services:
+  database:
+    container_name: database
+    hostname: database
+    build: database/.
+    env_file:
+      ../variables.env
+    tty: true
+    restart: unless-stopped
+    stdin_open: true
+    ports:
+      - "3306:3306"
+  cache:
+    container_name: cache
+    hostname: cache
+    build: cache/.
+    env_file:
+      ../variables.env
+    tty: true
+    restart: unless-stopped
+    stdin_open: true
+    ports:
+      - "6379:6379"
+  files:
+    container_name: files
+    hostname: files
+    build: files/.
+    tty: true
+    stdin_open: true
+    env_file:
+      ../variables.env
+    ports:
+      - "3302:22"
+  application:
+    container_name: application
+    hostname: application
+    stdin_open: true
+    restart: unless-stopped
+    depends_on:
+      - database
+      - cache
+      - files
+    build: application/.
+    ports:
+      - "8000:80"
+      - "3322:22"
+    devices:
+      - /dev/fuse
+    cap_add:
+      - SYS_ADMIN
+    security_opt:
+      - apparmor:unconfined
+    tty: true
+    env_file:
+      ../variables.env
+networks:
+  default:
+    # Use a custom driver
+    driver: "bridge"

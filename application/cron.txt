@@ -1,0 +1,9 @@
+# Run email cron job every minute
+55 23 * * 0 php -q /var/www/html/backend/cron/clean_test.cron.php 2>&1
+5 0 1 * * php -q /var/www/html/backend/cron/clean_test.cron.php 2>&1
+*/2 * * * * php -q /var/www/html/backend/cron/subscription.cron.php 2>&1
+* * * * * php -q /var/www/html/backend/cron/email.cron.php 2>&1
+* * * * * php -q /var/www/html/backend/cron/import.cron.php 2>&1
+* * * * * /var/www/html/backend/shell/export.sh 2>&1
+# An empty line is required at the end of this file for a valid cron file.
+
